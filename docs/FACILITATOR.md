@@ -57,6 +57,11 @@ Everything in a 2-hour run stays inside the Free Tier: DynamoDB on-demand, AppSy
 MAU), CloudFront, Amplify Hosting build minutes. The only recurring cost if not cleaned up is the CDK
 bootstrap S3 bucket and CloudWatch logs (cents per month). Insist on Module 5 anyway.
 
+## Talk track
+
+The full per-slide script, with timings and the key line for each slide, is in
+[TALK-TRACK.md](TALK-TRACK.md). It is also embedded as speaker notes in the deck.
+
 ## Talk track summary (slides)
 
 1. What a "full-stack" app needs: data, auth, hosting, CI/CD.

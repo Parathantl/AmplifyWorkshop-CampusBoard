@@ -55,7 +55,7 @@ everyone's screen in real time. All of the backend is described in about forty l
 | 4 | [Deploy with Amplify Hosting](docs/04-deploy.md) | 20 min | Git-based CI/CD to a public URL |
 | 5 | [Clean up](docs/05-cleanup.md) | 10 min | Delete everything so you are not billed |
 
-Facilitator notes and the run-of-show are in [docs/FACILITATOR.md](docs/FACILITATOR.md).
+Facilitator notes and the run-of-show are in [docs/FACILITATOR.md](docs/FACILITATOR.md); the per-slide talk track is in [docs/TALK-TRACK.md](docs/TALK-TRACK.md).
 
 ## Project layout (starter)
 
