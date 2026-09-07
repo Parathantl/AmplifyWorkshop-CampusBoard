@@ -14,11 +14,12 @@
 }
 .who { display: flex; align-items: center; gap: 12px; font-size: 14px; }
 .who .email { color: #cadcfc; }
-.topbar button {
+/* only the header's own buttons; the sign-in modal (Module 2) also renders inside .topbar */
+.who > button {
   background: transparent; color: #fff; border: 1px solid #5f6b7a;
   border-radius: 6px; padding: 6px 12px;
 }
-.topbar button.primary { background: var(--orange); border-color: var(--orange); color: var(--ink); font-weight: 600; }
+.who > button.primary { background: var(--orange); border-color: var(--orange); color: var(--ink); font-weight: 600; }
 
 /* layout */
 .layout {
