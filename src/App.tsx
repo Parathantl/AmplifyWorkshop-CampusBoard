@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/data';
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import type { Schema } from '../amplify/data/resource';
 import './App.css';
 import Header from './components/Header';
@@ -9,7 +10,10 @@ import type { NewPost, Post } from './types';
 
 const client = generateClient<Schema>();
 
-export default function App() {
+function Board() {
+  const { authStatus, user } = useAuthenticator((ctx) => [ctx.authStatus, ctx.user]);
+  const signedIn = authStatus === 'authenticated';
+  const email = user?.signInDetails?.loginId;
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -22,12 +26,12 @@ export default function App() {
   }, []);
 
   async function addPost(input: NewPost) {
-    const { errors } = await client.models.Post.create(input);
+    const { errors } = await client.models.Post.create(input, { authMode: 'userPool' });
     if (errors) alert(errors.map((e) => e.message).join('\n'));
   }
 
   async function deletePost(id: string) {
-    const { errors } = await client.models.Post.delete({ id });
+    const { errors } = await client.models.Post.delete({ id }, { authMode: 'userPool' });
     if (errors) alert(errors.map((e) => e.message).join('\n'));
   }
 
@@ -36,7 +40,13 @@ export default function App() {
       <Header />
       <main className="layout">
         <aside className="compose">
-          <PostForm onSubmit={addPost} />
+          {signedIn ? (
+            <PostForm onSubmit={addPost} author={email} />
+          ) : (
+            <div className="card signin-nudge">
+              <p>Anyone can read the board. Sign in to post.</p>
+            </div>
+          )}
         </aside>
         <section className="feed">
           <h2>
@@ -44,7 +54,7 @@ export default function App() {
           </h2>
           {posts.length === 0 && <p className="empty">Nothing here yet. Be the first to post.</p>}
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} canDelete onDelete={() => deletePost(post.id)} />
+            <PostCard key={post.id} post={post} canDelete={signedIn} onDelete={() => deletePost(post.id)} />
           ))}
         </section>
       </main>
@@ -52,5 +62,13 @@ export default function App() {
         Campus Board · University of Jaffna AWS Builders Group · built with AWS Amplify Gen 2
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Authenticator.Provider>
+      <Board />
+    </Authenticator.Provider>
   );
 }
