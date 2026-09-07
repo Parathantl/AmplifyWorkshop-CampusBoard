@@ -6,8 +6,7 @@ Module 4 and at the end. Times are targets; the buffer lives in the hands-on, no
 Every slide has one **key line**. If you are behind, say the key line, and move on. If you are badly
 behind, skip slides 5, 8 and 14 entirely; nothing later depends on them.
 
-Before you start: the live board (<https://main.d2j5j1zh2837n7.amplifyapp.com>) open in a browser
-tab, signed in as Admin, and your own sandbox running so the projector board updates during Module 1.
+Before you start: your deployed board open in a browser tab, signed in as Admin, and your own sandbox running so the projector board updates during Module 1.
 
 ---
 

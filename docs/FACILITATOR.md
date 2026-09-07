@@ -18,7 +18,7 @@ Format: 20-minute talk, then guided hands-on. Target 2 h 00 min, 2 h 20 min with
 
 | Clock | Min | Segment | Notes |
 |---|---|---|---|
-| 0:00 | 5 | Welcome, show the finished board | <https://main.d2j5j1zh2837n7.amplifyapp.com>; ask everyone to post from their phone |
+| 0:00 | 5 | Welcome, show the finished board | Your hosted `main`; ask everyone to post from their phone |
 | 0:05 | 15 | **Talk**: Amplify Gen 2 and the services underneath | Slides 1–15 |
 | 0:20 | 15 | **Module 0** Setup, sandbox | Start `ampx sandbox` early; ~5 min |
 | 0:35 | 20 | **Module 1** Data model, live feed | The room posting to each other is the moment of the day |

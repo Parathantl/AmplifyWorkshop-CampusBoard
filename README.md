@@ -2,8 +2,6 @@
 
 Hands-on workshop for the **University of Jaffna AWS Builders Group**.
 
-**Live demo (instructor's deployment):** <https://main.d2j5j1zh2837n7.amplifyapp.com> — open it, sign up, post something.
-
 In about two hours you turn a small React app into a real cloud application: a campus notice board
 where anyone can read, signed-in students can post, and admins can moderate. Every post appears on
 everyone's screen in real time. All of the backend is described in about forty lines of TypeScript;
