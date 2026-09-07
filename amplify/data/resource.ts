@@ -7,7 +7,11 @@ const schema = a.schema({
     category: a.enum(['NOTICE', 'EVENT', 'LOST_FOUND', 'STUDY_GROUP']),
     link: a.url(),
     author: a.string(),
-  }).authorization((allow) => [allow.publicApiKey()]),
+  }).authorization((allow) => [
+    allow.publicApiKey().to(['read']),   // anyone can read
+    allow.owner(),                       // the author can update/delete their own post
+    allow.group('Admin'),                // Admin group can do anything
+  ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

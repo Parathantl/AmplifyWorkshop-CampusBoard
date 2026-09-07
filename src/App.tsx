@@ -7,6 +7,7 @@ import Header from './components/Header';
 import PostForm from './components/PostForm';
 import PostCard from './components/PostCard';
 import type { NewPost, Post } from './types';
+import { isOwner, useIsAdmin } from './auth';
 
 const client = generateClient<Schema>();
 
@@ -14,6 +15,7 @@ function Board() {
   const { authStatus, user } = useAuthenticator((ctx) => [ctx.authStatus, ctx.user]);
   const signedIn = authStatus === 'authenticated';
   const email = user?.signInDetails?.loginId;
+  const isAdmin = useIsAdmin(authStatus);
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -54,7 +56,12 @@ function Board() {
           </h2>
           {posts.length === 0 && <p className="empty">Nothing here yet. Be the first to post.</p>}
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} canDelete={signedIn} onDelete={() => deletePost(post.id)} />
+            <PostCard
+              key={post.id}
+              post={post}
+              canDelete={signedIn && (isAdmin || isOwner(post, user))}
+              onDelete={() => deletePost(post.id)}
+            />
           ))}
         </section>
       </main>
